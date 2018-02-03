@@ -202,9 +202,10 @@ $black: #2f2f2f
     .loader
         position: relative
         margin: 100px auto
-        width: 350px
-        height: 350px
-        // border: 1px solid #000
+        // width: 350px
+        // height: 350px
+        width: 20%
+        height: 20%
         // animation: animaterotation $rotation_duration infinite linear
         // transform: rotate(450deg)
         .box_l
@@ -216,41 +217,71 @@ $black: #2f2f2f
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
+
             // left: 0
             // top: 0
             .logo_l
                 position: relative
-                height: 1px
-                margin-top: 50%
+                // height: 1px
+                // margin-top: 50%
+                width: 100%
+                height: 100%
+                // border: 1px solid #fff
                 &::after, &::before
                     content: ''
                     display: block
-                    background-size: cover
+                    background-size: contain
+                    // background-size: cover
+                    background-repeat: no-repeat
                     background-image: url(../img/logo.svg)
-                    width: 131px
-                    height: 160px
+                    // background-position: 0% 0%
+                    // width: 131px
+                    // height: 160px
+
+                    // width: 35%
+                    // height: 40%
+
+                    width: 38%
+                    height: 43%
                     position: absolute
+                    // max-width: 34px
+                    max-width: 36px
                 &::before
                     left: 0
-                    top: -50px
+                    // top: -50px
+                    top: 57%
+                    transform: translate(0, -50%)
                 &::after
-                    transform: rotate(180deg)
+                    transform: rotate(180deg) translate(0, -50%)
                     right: 0
-                    bottom: -50px
+                    top: 0%
             .box1
-                // background-color: #f00
-                &::after, &::before
-                    // border: 1px solid #f00
             .box2
                 transform: rotate(-60deg)
-                // background-color: #0f0
-                &::after, &::before
-                    // border: 1px solid #0f0
             .box3
-                // background-color: #00f
                 transform: rotate(-120deg)
+
+
+.loader_wrap
+    .loader
+        border: 1px solid #000
+        .box_l
+            .box1
+                border: 1px solid #f00
                 &::after, &::before
-                    // border: 1px solid #00f
+                    border: 1px solid #f00
+            .box2
+                border: 1px solid #0f0
+                &::after, &::before
+                    border: 1px solid #0f0
+            .box3
+                border: 1px solid #00f
+                &::after, &::before
+                    border: 1px solid #00f
+
+
+
+
 
 
 @keyframes animaterotation
@@ -260,9 +291,10 @@ $black: #2f2f2f
         transform: rotate(180deg)
     100%
         transform: rotate(360deg)
-// .loader
-//     // animation: animaterotation $rotation_duration infinite linear
-//     animation: animaterotation $duration infinite linear
+.loader_wrap
+    .loader
+        .box_l
+            animation: scale2 ($rotation_duration / 2) infinite linear alternate
 
 @keyframes scale
     0%
@@ -271,25 +303,18 @@ $black: #2f2f2f
     100%
         width: 500px
         height: 500px
-    // 100%
-    //     width: 350px
-    //     height: 350px
 .loader
-    // animation: scale ($rotation_duration / 2) infinite linear alternate
     animation: animaterotation $rotation_duration infinite linear
-    // animation: scale ($rotation_duration / 2) infinite linear alternate, animaterotation $rotation_duration infinite linear
 
 @keyframes scale2
     0%
         width: 100%
+        height: 100%
         top: 50%
     100%
         width: 150%
-        top: 25%
+        height: 150%
+        // top: 25%
 
-.loader_wrap
-    .loader
-        .box_l
-            animation: scale2 ($rotation_duration / 2) infinite linear alternate
 
 @import "media" // Всегда в конце
