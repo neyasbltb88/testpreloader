@@ -202,12 +202,10 @@ $black: #2f2f2f
     .loader
         position: relative
         margin: 100px auto
-        // width: 350px
-        // height: 350px
-        width: 20%
-        height: 20%
-        // animation: animaterotation $rotation_duration infinite linear
-        // transform: rotate(450deg)
+        width: 350px
+        height: 350px
+        // width: 20%
+        // height: 20%
         .box_l
             position: absolute
             // width: 350px
@@ -222,10 +220,10 @@ $black: #2f2f2f
             // top: 0
             .logo_l
                 position: relative
-                // height: 1px
-                // margin-top: 50%
-                width: 100%
-                height: 100%
+                height: 1px
+                margin-top: 50%
+                // width: 100%
+                // height: 100%
                 // border: 1px solid #fff
                 &::after, &::before
                     content: ''
@@ -235,26 +233,27 @@ $black: #2f2f2f
                     background-repeat: no-repeat
                     background-image: url(../img/logo.svg)
                     // background-position: 0% 0%
-                    // width: 131px
-                    // height: 160px
+                    width: 131px
+                    height: 160px
 
                     // width: 35%
                     // height: 40%
 
-                    width: 38%
-                    height: 43%
+                    // width: 38%
+                    // height: 43%
                     position: absolute
                     // max-width: 34px
-                    max-width: 36px
+                    // max-width: 36px
                 &::before
                     left: 0
-                    // top: -50px
-                    top: 57%
-                    transform: translate(0, -50%)
+                    top: -50px
+                    // top: 57%
+                    // transform: translate(0, -50%)
                 &::after
-                    transform: rotate(180deg) translate(0, -50%)
+                    // transform: rotate(180deg) translate(0, -50%)
+                    transform: rotate(180deg)
                     right: 0
-                    top: 0%
+                    bottom: -50px
             .box1
             .box2
                 transform: rotate(-60deg)
@@ -262,22 +261,22 @@ $black: #2f2f2f
                 transform: rotate(-120deg)
 
 
-.loader_wrap
-    .loader
-        border: 1px solid #000
-        .box_l
-            .box1
-                border: 1px solid #f00
-                &::after, &::before
-                    border: 1px solid #f00
-            .box2
-                border: 1px solid #0f0
-                &::after, &::before
-                    border: 1px solid #0f0
-            .box3
-                border: 1px solid #00f
-                &::after, &::before
-                    border: 1px solid #00f
+// .loader_wrap
+//     .loader
+//         border: 1px solid #000
+//         .box_l
+//             .box1
+//                 border: 1px solid #f00
+//                 &::after, &::before
+//                     border: 1px solid #f00
+//             .box2
+//                 border: 1px solid #0f0
+//                 &::after, &::before
+//                     border: 1px solid #0f0
+//             .box3
+//                 border: 1px solid #00f
+//                 &::after, &::before
+//                     border: 1px solid #00f
 
 
 
@@ -309,12 +308,12 @@ $black: #2f2f2f
 @keyframes scale2
     0%
         width: 100%
-        height: 100%
+        // height: 100%
         top: 50%
     100%
         width: 150%
-        height: 150%
-        // top: 25%
+        // height: 150%
+        top: 25%
 
 
 @import "media" // Всегда в конце
