@@ -188,6 +188,8 @@ body
     
 // Урок Animation CSS КОНЕЦ
 
+$rotation_duration: 3.5s
+
 .loader
     position: relative
     margin: 100px auto
@@ -195,6 +197,8 @@ body
     height: 350px
     // background-color: #000
     border: 1px solid #000
+    // animation: animaterotation $rotation_duration infinite linear
+    // transform: rotate(450deg)
     .box_l
         position: absolute
         // width: 350px
@@ -239,5 +243,32 @@ body
             transform: rotate(-120deg)
             &::after, &::before
                 border: 1px solid #00f
-            
+
+
+@keyframes animaterotation
+    0%
+        transform: rotate(0deg)
+    50%
+        transform: rotate(180deg)
+    100%
+        transform: rotate(360deg)
+// .loader
+//     // animation: animaterotation $rotation_duration infinite linear
+//     animation: animaterotation $duration infinite linear
+
+@keyframes scale
+    0%
+        width: 350px
+        height: 350px
+    100%
+        width: 500px
+        height: 500px
+    // 100%
+    //     width: 350px
+    //     height: 350px
+.loader
+    // animation: animaterotation $rotation_duration infinite linear
+    animation: scale ($rotation_duration / 2) infinite linear alternate, animaterotation $rotation_duration infinite linear
+
+
 @import "media" // Всегда в конце
