@@ -26,79 +26,79 @@ body
         margin: 100px auto
         width: 50%
         // height: 30%         //Отладка
-        .box_l
+        // .box_l
+            // position: absolute
+            // width: 100%
+            // height: 100%
+            // // left: 50%
+            // // top: 50%
+            // // transform: translate(-50%, -50%)
+        .logo_l
+            // position: relative
             position: absolute
             width: 100%
             height: 100%
-            left: 50%
-            top: 50%
-            transform: translate(-50%, -50%)
-            .logo_l
-                position: relative
-                width: 100%
-                height: 100%
-                // &::after, &::before
-                .segment
-                    // content: ''
-                    display: block
-                    background-size: contain
-                    background-repeat: no-repeat
-                    // background-image: url(../img/logo.svg)
-                    width: 37%
-                    height: 42%
-                    position: absolute
-                    // max-width: 36px         //Отладка
-                    svg
-                        width: 100%
-                        height: 100%
-                .before
-                    // background-image: url(../img/logo_before.svg)
-                    left: 0
-                    top: 58%
-                    transform: translate(0, -50%)
-                .after
-                    // background-image: url(../img/logo_after.svg)
-                    // transform: rotate(180deg) translate(0, -50%)
-                    transform: translate(0, 50%)
-                    right: 0
-                    top: 0
-            .box1
-            .box2
-                transform: rotate(-60deg)
-            .box3
-                transform: rotate(-120deg)
+            // &::after, &::before
+            .segment
+                // content: ''
+                display: block
+                background-size: contain
+                background-repeat: no-repeat
+                // background-image: url(../img/logo.svg)
+                width: 37%
+                height: 42%
+                position: absolute
+                // max-width: 36px         //Отладка
+                svg
+                    width: 100%
+                    height: 100%
+            .before
+                // background-image: url(../img/logo_before.svg)
+                left: 0
+                top: 58%
+                transform: translate(0, -50%)
+            .after
+                // background-image: url(../img/logo_after.svg)
+                // transform: rotate(180deg) translate(0, -50%)
+                transform: translate(0, 50%)
+                right: 0
+                top: 0
+        .box1
+        .box2
+            transform: rotate(-60deg)
+        .box3
+            transform: rotate(-120deg)
 
 
 .loader_wrap
     .loader
         border: 1px solid #000
-        .box_l
-            .box1
+        .box1
+            border: 1px solid #f00
+            // &::after, &::before
+            .segment
                 border: 1px solid #f00
-                // &::after, &::before
-                .segment
-                    border: 1px solid #f00
-            .box2
+        .box2
+            border: 1px solid #0f0
+            // &::after, &::before
+            .segment
                 border: 1px solid #0f0
-                // &::after, &::before
-                .segment
-                    border: 1px solid #0f0
-            .box3
+        .box3
+            border: 1px solid #00f
+            // &::after, &::before
+            .segment
                 border: 1px solid #00f
-                // &::after, &::before
-                .segment
-                    border: 1px solid #00f
 
 
 .loader_wrap
     .loader
-        // animation: rotation $rotation_duration infinite linear
-        .box_l
-            // animation: scale3 ($rotation_duration / 2) infinite linear alternate
-            .before
-                // animation: scale_before ($rotation_duration / 2) infinite linear alternate
-            .after
-                // animation: scale_after ($rotation_duration / 2) infinite linear alternate
+        animation: rotation $rotation_duration infinite linear
+        // .box_l
+        //     // animation: scale3 ($rotation_duration / 2) infinite linear alternate
+        .before
+            animation: scale_before ($rotation_duration / 2) infinite linear alternate
+        .after
+            animation: scale_after ($rotation_duration / 2) infinite linear alternate
 
 
 
