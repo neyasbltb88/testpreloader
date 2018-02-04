@@ -54,15 +54,17 @@ body
                     height: 100%
             .before
                 // background-image: url(../img/logo_before.svg)
-                left: 0
-                top: 58%
-                transform: translate(0, -50%)
+                left: 3%
+                // top: 58%
+                top: 37%
+                // transform: translate(0, -50%)
             .after
                 // background-image: url(../img/logo_after.svg)
                 // transform: rotate(180deg) translate(0, -50%)
-                transform: translate(0, 50%)
-                right: 0
-                top: 0
+                // transform: translate(0, 50%)
+                right: 3%
+                // top: 0
+                bottom: 37%
         .box1
         .box2
             transform: rotate(-60deg)
@@ -70,24 +72,24 @@ body
             transform: rotate(-120deg)
 
 
-.loader_wrap
-    .loader
-        border: 1px solid #000
-        .box1
-            border: 1px solid #f00
-            // &::after, &::before
-            .segment
-                border: 1px solid #f00
-        .box2
-            border: 1px solid #0f0
-            // &::after, &::before
-            .segment
-                border: 1px solid #0f0
-        .box3
-            border: 1px solid #00f
-            // &::after, &::before
-            .segment
-                border: 1px solid #00f
+// .loader_wrap
+//     .loader
+//         border: 1px solid #000
+//         .box1
+//             border: 1px solid #f00
+//             // &::after, &::before
+//             .segment
+//                 border: 1px solid #f00
+//         .box2
+//             border: 1px solid #0f0
+//             // &::after, &::before
+//             .segment
+//                 border: 1px solid #0f0
+//         .box3
+//             border: 1px solid #00f
+//             // &::after, &::before
+//             .segment
+//                 border: 1px solid #00f
 
 
 .loader_wrap
@@ -110,19 +112,19 @@ body
 
 @keyframes scale_before
     0%
-        transform: translate(0, -50%)
+        transform: translate(0, 0)
     25%
-        transform: translate(0, -50%)
+        transform: translate(0, 0)
     100%
-        transform: translate(-50%, -50%)
+        transform: translate(-50%, 0)
 
 @keyframes scale_after
     0%
-        transform: translate(0, 50%)
+        transform: translate(0, 0)
     25%
-        transform: translate(0, 50%) 
+        transform: translate(0, 0) 
     100%
-        transform: translate(50%, 50%)
+        transform: translate(50%, 0)
 
 
 @keyframes scale3
