@@ -29,7 +29,7 @@ function log(argument) {
         // log('loader_w: ' + parseInt(w_w / loader_ratio));
         // log('segment_w: ' + parseInt(segment_w));
         for (var i = 0; i < segment.length; i++) {
-            segment[i].style.maxWidth = parseInt(segment_w) + 'px';
+            segment[i].style.maxWidth = (segment_w) + 'px';
         }
     }
 
