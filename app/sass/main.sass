@@ -5,6 +5,7 @@
 $rotation_duration: 3.5s
 $black: #2f2f2f
 
+
 body
     background-color: $black
     overflow: hidden
@@ -23,7 +24,7 @@ body
     .loader
         position: relative
         margin: 100px auto
-        width: 15%
+        width: 20%
         // height: 20%         //Отладка
         .box_l
             position: absolute
@@ -90,8 +91,6 @@ body
 @keyframes animaterotation
     0%
         transform: rotate(0deg)
-    50%
-        transform: rotate(180deg)
     100%
         transform: rotate(360deg)
 .loader_wrap
@@ -113,15 +112,19 @@ body
     0%
         width: 100%
         height: 100%
-        // opacity: 1
-    10%
+        opacity: 1
+    25%
         width: 100%
         height: 100%
-        // opacity: 1
+        opacity: 1
+    90%
+        // opacity: .1
     100%
         width: 150%
         height: 150%
-        // opacity: .3
+        // width: 200%
+        // height: 200%
+        // opacity: .05
 
 
 @import "media" // Всегда в конце
