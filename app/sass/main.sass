@@ -43,17 +43,23 @@ body
                     display: block
                     background-size: contain
                     background-repeat: no-repeat
-                    background-image: url(../img/logo.svg)
+                    // background-image: url(../img/logo.svg)
                     width: 37%
                     height: 42%
                     position: absolute
                     // max-width: 36px         //Отладка
+                    svg
+                        width: 100%
+                        height: 100%
                 .before
+                    // background-image: url(../img/logo_before.svg)
                     left: 0
                     top: 58%
-                    // transform: translate(0, -50%)
+                    transform: translate(0, -50%)
                 .after
+                    // background-image: url(../img/logo_after.svg)
                     // transform: rotate(180deg) translate(0, -50%)
+                    transform: translate(0, 50%)
                     right: 0
                     top: 0
             .box1
@@ -63,25 +69,25 @@ body
                 transform: rotate(-120deg)
 
 
-// .loader_wrap
-//     .loader
-//         border: 1px solid #000
-//         .box_l
-//             .box1
-//                 border: 1px solid #f00
-//                 // &::after, &::before
-//                 .segment
-//                     border: 1px solid #f00
-//             .box2
-//                 border: 1px solid #0f0
-//                 // &::after, &::before
-//                 .segment
-//                     border: 1px solid #0f0
-//             .box3
-//                 border: 1px solid #00f
-//                 // &::after, &::before
-//                 .segment
-//                     border: 1px solid #00f
+.loader_wrap
+    .loader
+        border: 1px solid #000
+        .box_l
+            .box1
+                border: 1px solid #f00
+                // &::after, &::before
+                .segment
+                    border: 1px solid #f00
+            .box2
+                border: 1px solid #0f0
+                // &::after, &::before
+                .segment
+                    border: 1px solid #0f0
+            .box3
+                border: 1px solid #00f
+                // &::after, &::before
+                .segment
+                    border: 1px solid #00f
 
 
 .loader_wrap
@@ -112,11 +118,11 @@ body
 
 @keyframes scale_after
     0%
-        transform: rotate(180deg) translate(0, -50%) 
+        transform: translate(0, 50%)
     25%
-        transform: rotate(180deg) translate(0, -50%) 
+        transform: translate(0, 50%) 
     100%
-        transform: rotate(180deg) translate(-50%, -50%) 
+        transform: translate(50%, 50%)
 
 
 @keyframes scale3
