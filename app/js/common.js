@@ -25,12 +25,12 @@ function log(argument) {
 
         loader.style.height = w_w / loader_ratio + 'px';
 
-        var segment_w = (w_w / loader_ratio) / segment_ratio;
-        // log('loader_w: ' + parseInt(w_w / loader_ratio));
-        // log('segment_w: ' + parseInt(segment_w));
-        for (var i = 0; i < segment.length; i++) {
-            segment[i].style.maxWidth = (segment_w) + 'px';
-        }
+        // var segment_w = (w_w / loader_ratio) / segment_ratio;
+        // // log('loader_w: ' + parseInt(w_w / loader_ratio));
+        // // log('segment_w: ' + parseInt(segment_w));
+        // for (var i = 0; i < segment.length; i++) {
+        //     segment[i].style.maxWidth = (segment_w) + 'px';
+        // }
     }
 
     preloader_resize();
