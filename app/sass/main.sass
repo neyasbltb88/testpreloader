@@ -1,9 +1,7 @@
-@import "fonts"
-@import "libs"
-@import "vars"
-
 $rotation_duration: 3.5s
 $black: #2f2f2f
+$scale_val: 50%
+$preloader_size: 30%
 
 
 body
@@ -24,27 +22,18 @@ body
     .loader
         position: relative
         margin: 100px auto
-        width: 50%
+        width: $preloader_size
         // height: 30%         //Отладка
-        // .box_l
-            // position: absolute
-            // width: 100%
-            // height: 100%
-            // // left: 50%
-            // // top: 50%
-            // // transform: translate(-50%, -50%)
         .logo_l
-            // position: relative
             position: absolute
+            left: 0
+            top: 0
             width: 100%
             height: 100%
-            // &::after, &::before
             .segment
-                // content: ''
                 display: block
                 background-size: contain
                 background-repeat: no-repeat
-                // background-image: url(../img/logo.svg)
                 width: 37%
                 height: 42%
                 position: absolute
@@ -53,17 +42,10 @@ body
                     width: 100%
                     height: 100%
             .before
-                // background-image: url(../img/logo_before.svg)
                 left: 3%
-                // top: 58%
                 top: 37%
-                // transform: translate(0, -50%)
             .after
-                // background-image: url(../img/logo_after.svg)
-                // transform: rotate(180deg) translate(0, -50%)
-                // transform: translate(0, 50%)
                 right: 3%
-                // top: 0
                 bottom: 37%
         .box1
         .box2
@@ -77,17 +59,14 @@ body
 //         border: 1px solid #000
 //         .box1
 //             border: 1px solid #f00
-//             // &::after, &::before
 //             .segment
 //                 border: 1px solid #f00
 //         .box2
 //             border: 1px solid #0f0
-//             // &::after, &::before
 //             .segment
 //                 border: 1px solid #0f0
 //         .box3
 //             border: 1px solid #00f
-//             // &::after, &::before
 //             .segment
 //                 border: 1px solid #00f
 
@@ -95,8 +74,6 @@ body
 .loader_wrap
     .loader
         animation: rotation $rotation_duration infinite linear
-        // .box_l
-        //     // animation: scale3 ($rotation_duration / 2) infinite linear alternate
         .before
             animation: scale_before ($rotation_duration / 2) infinite linear alternate
         .after
@@ -116,7 +93,7 @@ body
     25%
         transform: translate(0, 0)
     100%
-        transform: translate(-50%, 0)
+        transform: translate(-$scale_val, 0)
 
 @keyframes scale_after
     0%
@@ -124,38 +101,6 @@ body
     25%
         transform: translate(0, 0) 
     100%
-        transform: translate(50%, 0)
-
-
-@keyframes scale3
-    0%
-        width: 100%
-        height: 100%
-    25%
-        width: 100%
-        height: 100%
-    100%
-        width: 150%
-        height: 150%
-
-
-@keyframes scale2
-    0%
-        transform: translate(-50%, -50%) scale(1)
-    25%
-        transform: translate(-50%, -50%) scale(1)
-    100%
-        transform: translate(-50%, -50%) scale(1.5)
-
-@keyframes scale
-    0%
-        width: 350px
-        height: 350px
-    100%
-        width: 500px
-        height: 500px
-
-
-
+        transform: translate($scale_val, 0)
 
 @import "media" // Всегда в конце
