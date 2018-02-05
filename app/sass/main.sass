@@ -10,6 +10,10 @@ $preloader_size: 30%
 body
     background-color: $black
     overflow-x: hidden
+    left: 0
+    top: 0
+    width: 100vw
+    height: 100vh
 
 .opacity0
     opacity: 0
@@ -29,6 +33,7 @@ body
     position: fixed
     top: 0
     left: 0
+    z-index: 9999
     .loader
         position: relative
         width: $preloader_size
@@ -127,6 +132,7 @@ body
     width: 100%
     height: 150vh
     background-color: $black
+    z-index: 1
     .loaded_page
         font-size: 24px
         color: #fff

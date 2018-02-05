@@ -4,6 +4,7 @@ var loader_square = true;
 var loader_wrap = document.querySelector('#loader_wrap');
 var loader_wrap_original_display = getComputedStyle(loader_wrap).display;
 var loader = document.querySelector('.loader');
+var content_wrap = document.querySelector('#content_wrap');
 
 var loader_fade_time_preloader = 700; //Время исчезновения прелоадера, мс
 var loader_time_demo = 3500; //Период переключения демо
@@ -47,9 +48,15 @@ function init_preloader() {
         window.addEventListener("optimizedResize", preloader_resize);
         preloader_resize();
     }
-    document.body.style.overflowY = 'hidden';
-    // document.body.style.position = 'fixed';
-    document.body.style.maxHeight = '100vh';
+    // content_wrap.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    // content_wrap.style.position = 'fixed';
+    // content_wrap.style.top = '0';
+    // content_wrap.style.left = '0';
+    // document.body.style.maxHeight = '100vh';
+    // content_wrap.style.maxHeight = '100vh';
+    // content_wrap.style.maxWidth = '100vw';
 }
 
 function remove_preloader() {
@@ -70,13 +77,19 @@ function remove_preloader() {
             loader_wrap.classList.remove("active");
         }, loader_fade_time_preloader);
     }
-    document.body.style.overflowY = '';
-    // document.body.style.position = '';
-    document.body.style.maxHeight = '';
+    // content_wrap.style.overflow = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    // content_wrap.style.position = '';
+    // content_wrap.style.top = '';
+    // content_wrap.style.left = '';
+    // document.body.style.maxHeight = '';
+    // content_wrap.style.maxHeight = '';
+    // content_wrap.style.maxWidth = '';
 }
 
-document.querySelector('#content_wrap').addEventListener("click", init_preloader); //Для теста
-document.querySelector('#content_wrap').style.cursor = 'pointer'; //Для теста
+content_wrap.addEventListener("click", init_preloader); //Для теста
+content_wrap.style.cursor = 'pointer'; //Для теста
 
 loader.addEventListener("click", remove_preloader); //Для теста
 loader.style.cursor = 'pointer'; //Для теста
