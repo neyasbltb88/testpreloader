@@ -1,4 +1,4 @@
-var loader_demo = true;
+var loader_demo = false;
 var loader_square = true;
 
 var loader_wrap = document.querySelector('#loader_wrap');
@@ -48,15 +48,23 @@ function init_preloader() {
         window.addEventListener("optimizedResize", preloader_resize);
         preloader_resize();
     }
-    // content_wrap.style.overflow = 'hidden';
+
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    // content_wrap.style.position = 'fixed';
-    // content_wrap.style.top = '0';
-    // content_wrap.style.left = '0';
-    // document.body.style.maxHeight = '100vh';
-    // content_wrap.style.maxHeight = '100vh';
-    // content_wrap.style.maxWidth = '100vw';
+    setTimeout(function() {
+            // document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100vw';
+            document.body.style.height = '100vh';
+        }, loader_fade_time_preloader)
+        // content_wrap.style.overflow = 'hidden';
+        // document.body.style.overflow = 'hidden';
+        // document.body.style.position = 'fixed';
+        // content_wrap.style.position = 'fixed';
+        // content_wrap.style.top = '0';
+        // content_wrap.style.left = '0';
+        // document.body.style.maxHeight = '100vh';
+        // content_wrap.style.maxHeight = '100vh';
+        // content_wrap.style.maxWidth = '100vw';
 }
 
 function remove_preloader() {
@@ -77,15 +85,10 @@ function remove_preloader() {
             loader_wrap.classList.remove("active");
         }, loader_fade_time_preloader);
     }
-    // content_wrap.style.overflow = '';
     document.body.style.overflow = '';
     document.body.style.position = '';
-    // content_wrap.style.position = '';
-    // content_wrap.style.top = '';
-    // content_wrap.style.left = '';
-    // document.body.style.maxHeight = '';
-    // content_wrap.style.maxHeight = '';
-    // content_wrap.style.maxWidth = '';
+    document.body.style.width = '';
+    document.body.style.height = '';
 }
 
 content_wrap.addEventListener("click", init_preloader); //Для теста
