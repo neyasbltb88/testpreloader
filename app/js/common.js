@@ -48,7 +48,8 @@ function init_preloader() {
         preloader_resize();
     }
     document.body.style.overflowY = 'hidden';
-    document.body.style.position = 'fixed';
+    // document.body.style.position = 'fixed';
+    document.body.style.maxHeight = '100vh';
 }
 
 function remove_preloader() {
@@ -70,7 +71,8 @@ function remove_preloader() {
         }, loader_fade_time_preloader);
     }
     document.body.style.overflowY = '';
-    document.body.style.position = '';
+    // document.body.style.position = '';
+    document.body.style.maxHeight = '';
 }
 
 document.querySelector('#content_wrap').addEventListener("click", init_preloader); //Для теста
