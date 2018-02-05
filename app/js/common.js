@@ -30,13 +30,6 @@ if (loader_square) {
     init_preloader();
 }
 
-// function dont_scroll(event) {
-//     // event.preventDefault();
-//     console.log(event);
-
-//     console.log('dont_scroll()');
-// }
-
 function init_preloader() {
     console.log('init_preloader()');
     loader_wrap.style.display = loader_wrap_original_display;
@@ -54,14 +47,8 @@ function init_preloader() {
         window.addEventListener("optimizedResize", preloader_resize);
         preloader_resize();
     }
-
-    // window.addEventListener("scroll", dont_scroll);
-    // window.onscroll = function(event) {
-    //     console.log(event);
-    //     return false
-    // };
-    // console.log(document.body);
     document.body.style.overflowY = 'hidden';
+    document.body.style.position = 'fixed';
 }
 
 function remove_preloader() {
@@ -83,6 +70,7 @@ function remove_preloader() {
         }, loader_fade_time_preloader);
     }
     document.body.style.overflowY = '';
+    document.body.style.position = '';
 }
 
 document.querySelector('#content_wrap').addEventListener("click", init_preloader); //Для теста
