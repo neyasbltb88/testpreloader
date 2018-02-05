@@ -32,7 +32,11 @@ body
     .loader
         position: relative
         width: $preloader_size
-        // height: 30%         //Отладка
+        height: 30%         //Отладка
+        opacity: 0
+    &.active
+        .loader
+            opacity: 1
         .logo_l
             position: absolute
             left: 0
