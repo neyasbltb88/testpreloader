@@ -47,9 +47,6 @@ function init_preloader() {
     }
 }
 
-
-
-
 function remove_preloader() {
     console.log('remove_preloader()');
     if (loader_square) {
@@ -69,7 +66,6 @@ function remove_preloader() {
         }, loader_fade_time_preloader);
     }
 }
-
 
 document.querySelector('#content_wrap').addEventListener("click", init_preloader); //Для теста
 document.querySelector('#content_wrap').style.cursor = 'pointer'; //Для теста
