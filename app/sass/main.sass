@@ -80,10 +80,13 @@ body
 //                 border: 1px solid #00f
 
 #loader_wrap
-    .loader
-        animation: rotation $rotation_duration infinite linear
+    &.loader_animation_rotation
+        .loader
+            animation: rotation $rotation_duration infinite linear
+    &.loader_animation_scale_before
         .before
             animation: scale_before ($rotation_duration / 2) infinite linear alternate
+    &.loader_animation_scale_after
         .after
             animation: scale_after ($rotation_duration / 2) infinite linear alternate
 
