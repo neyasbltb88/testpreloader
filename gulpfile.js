@@ -18,9 +18,9 @@ var gulp = require('gulp'),
 
 gulp.task('common-js', function() {
     return gulp.src([
-            'app/js/common.js',
+            'app/js/loader.js',
         ])
-        .pipe(concat('common.min.js'))
+        .pipe(concat('loader.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('app/js'))
         .pipe(browserSync.reload({ stream: true }));
@@ -29,7 +29,7 @@ gulp.task('common-js', function() {
 // gulp.task('js', ['common-js'], function() {
 // 	return gulp.src([
 // 		'app/libs/jquery/dist/jquery.min.js',
-// 		'app/js/common.min.js', // Всегда в конце
+// 		'app/js/loader.min.js', // Всегда в конце
 // 		])
 // 	.pipe(concat('scripts.min.js'))
 // 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
@@ -60,7 +60,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'common-js', 'browser-sync'], function() {
     gulp.watch('app/sass/**/*.sass', ['sass']);
-    gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['common-js']);
+    gulp.watch(['libs/**/*.js', 'app/js/loader.js'], ['common-js']);
     gulp.watch('app/*.html', browserSync.reload);
 });
 
@@ -78,11 +78,11 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'common-js'], function() {
     ]).pipe(gulp.dest('dist'));
 
     var buildCss = gulp.src([
-        'app/css/main.min.css',
+        'app/css/loader.min.css',
     ]).pipe(gulp.dest('dist/css'));
 
     var buildJs = gulp.src([
-        'app/js/scripts.min.js',
+        'app/js/loader.min.js',
     ]).pipe(gulp.dest('dist/js'));
 
     var buildFonts = gulp.src([
