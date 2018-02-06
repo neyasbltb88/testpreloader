@@ -9,11 +9,6 @@ var content_wrap = document.querySelector('#content_wrap');
 var loader_fade_time_preloader = 700; //Время исчезновения прелоадера, мс
 var loader_time_demo = 3500; //Период переключения демо, мс
 
-// var animation_classes = {
-//     rotation: "loader_animation_rotation",
-//     scale_before: "loader_animation_scale_before",
-//     scale_after: "loader_animation_scale_after"
-// };
 var animation_classes = [
     "loader_animation_rotation",
     "loader_animation_scale_before",
@@ -26,7 +21,7 @@ var loader_wrap_original_display = getComputedStyle(loader_wrap).display;
 animation_classes.push("active");
 
 function init_preloader(callback1, callback2) {
-    console.log('init_preloader()');
+    // console.log('init_preloader()');
     loader_wrap.style.display = loader_wrap_original_display;
     for (var i = 0; i < animation_classes.length; i++) {
         loader_wrap.classList.add(animation_classes[i]);
@@ -57,7 +52,7 @@ function init_preloader(callback1, callback2) {
 };
 
 function remove_preloader(callback1, callback2) {
-    console.log('remove_preloader()');
+    // console.log('remove_preloader()');
     if (loader_square) {
         window.removeEventListener("optimizedResize", preloader_resize);
     }
@@ -123,7 +118,7 @@ function test_callback_remove() {
 };
 
 function preloader_resize() {
-    console.log('preloader_resize');
+    // console.log('preloader_resize');
     var w_w = window.innerWidth;
     var loader_comp_style = getComputedStyle(loader);
     var loader_w = parseInt(loader_comp_style.width);
@@ -135,8 +130,6 @@ function preloader_resize() {
 
 if (loader_square) {
     init_optimizedResize();
-
-
     init_preloader();
 } else {
     init_preloader();
