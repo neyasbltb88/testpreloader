@@ -6,8 +6,8 @@ var loader_wrap_original_display = getComputedStyle(loader_wrap).display;
 var loader = document.querySelector('.loader');
 var content_wrap = document.querySelector('#content_wrap');
 
-var loader_fade_time_preloader = 1500; //Время исчезновения прелоадера, мс
-var loader_time_demo = 7000; //Период переключения демо, мс
+var loader_fade_time_preloader = 700; //Время исчезновения прелоадера, мс
+var loader_time_demo = 3500; //Период переключения демо, мс
 
 var animation_classes = {
     rotation: "loader_animation_rotation",
