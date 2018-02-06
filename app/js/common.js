@@ -35,7 +35,7 @@ if (loader_demo) { //Для теста
     init_loader_demo()
 }
 
-function init_preloader() {
+function init_preloader(callback1, callback2) {
     console.log('init_preloader()');
     loader_wrap.style.display = loader_wrap_original_display;
     loader_wrap.classList.add(
@@ -58,10 +58,16 @@ function init_preloader() {
         document.body.style.position = 'fixed';
         document.body.style.width = '100vw';
         document.body.style.height = '100vh';
+
+        if (typeof(callback1) == 'function') {
+            callback1();
+        } else if (typeof(callback2) == 'function') {
+            callback2();
+        }
     }, loader_fade_time_preloader);
 }
 
-function remove_preloader() {
+function remove_preloader(callback1, callback2) {
     console.log('remove_preloader()');
     if (loader_square) {
         window.removeEventListener("optimizedResize", preloader_resize);
@@ -82,17 +88,23 @@ function remove_preloader() {
 
     document.body.style.overflowY = 'unset';
     setTimeout(function() {
-
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.height = '';
+
+        if (typeof(callback1) == 'function') {
+            callback1();
+        } else if (typeof(callback2) == 'function') {
+            callback2();
+        }
     }, loader_fade_time_preloader);
 }
 
 content_wrap.addEventListener("click", init_preloader); //Для теста
 content_wrap.style.cursor = 'pointer'; //Для теста
 
-loader.addEventListener("click", remove_preloader); //Для теста
+loader.addEventListener("click", remove_preloader, test_callback); //Для теста
+
 loader.style.cursor = 'pointer'; //Для теста
 
 function init_optimizedResize() {
@@ -117,9 +129,13 @@ function init_loader_demo() {
     console.log('Демо-режим');
     setInterval(function() {
         if (loader_wrap.style.display == loader_wrap_original_display) {
-            remove_preloader();
+            remove_preloader(test_callback);
         } else {
-            init_preloader();
+            init_preloader(test_callback);
         }
     }, loader_time_demo);
+}
+
+function test_callback() {
+    console.log('test_callback');
 }
