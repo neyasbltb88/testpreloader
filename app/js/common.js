@@ -75,6 +75,10 @@ function remove_preloader(callback1, callback2) {
     if (loader_wrap) {
         loader_wrap.style.transition = 'opacity ' + loader_fade_time_preloader / 1000 + 's';
         loader_wrap.style.opacity = '0';
+        document.body.style.overflowY = 'unset';
+        document.body.style.width = '';
+        document.body.style.height = '';
+        document.body.style.position = '';
         setTimeout(function() {
             loader_wrap.style.display = 'none';
             loader_wrap.classList.remove(
@@ -82,22 +86,16 @@ function remove_preloader(callback1, callback2) {
                 animation_classes.scale_before,
                 animation_classes.scale_after
             );
+
+
+            if (typeof(callback1) == 'function') {
+                callback1();
+            } else if (typeof(callback2) == 'function') {
+                callback2();
+            }
             loader_wrap.classList.remove("active");
         }, loader_fade_time_preloader);
     }
-
-    document.body.style.overflowY = 'unset';
-    setTimeout(function() {
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.height = '';
-
-        if (typeof(callback1) == 'function') {
-            callback1();
-        } else if (typeof(callback2) == 'function') {
-            callback2();
-        }
-    }, loader_fade_time_preloader);
 }
 
 content_wrap.addEventListener("click", init_preloader); //Для теста
