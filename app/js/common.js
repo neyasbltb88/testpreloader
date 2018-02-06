@@ -6,7 +6,7 @@ var loader_wrap_original_display = getComputedStyle(loader_wrap).display;
 var loader = document.querySelector('.loader');
 var content_wrap = document.querySelector('#content_wrap');
 
-var loader_fade_time_preloader = 700; //Время исчезновения прелоадера, мс
+var loader_fade_time_preloader = 1500; //Время исчезновения прелоадера, мс
 var loader_time_demo = 3500; //Период переключения демо, мс
 
 var animation_classes = {
@@ -86,13 +86,13 @@ function remove_preloader(callback1, callback2) {
                 animation_classes.scale_before,
                 animation_classes.scale_after
             );
+            loader_wrap.classList.remove("active");
 
             if (typeof(callback1) == 'function') {
                 callback1();
             } else if (typeof(callback2) == 'function') {
                 callback2();
             }
-            loader_wrap.classList.remove("active");
         }, loader_fade_time_preloader);
     }
 }
@@ -100,7 +100,7 @@ function remove_preloader(callback1, callback2) {
 content_wrap.addEventListener("click", init_preloader); //Для теста
 content_wrap.style.cursor = 'pointer'; //Для теста
 
-loader.addEventListener("click", remove_preloader, test_callback); //Для теста
+loader.addEventListener("click", remove_preloader); //Для теста
 
 loader.style.cursor = 'pointer'; //Для теста
 
@@ -126,13 +126,17 @@ function init_loader_demo() {
     console.log('Демо-режим');
     setInterval(function() {
         if (loader_wrap.style.display == loader_wrap_original_display) {
-            remove_preloader(test_callback);
+            remove_preloader(test_callback_add);
         } else {
-            init_preloader(test_callback);
+            init_preloader(test_callback_remove);
         }
     }, loader_time_demo);
 }
 
-function test_callback() {
-    console.log('test_callback');
+function test_callback_add() {
+    content_wrap.classList.add("loader_hideen");
+}
+
+function test_callback_remove() {
+    content_wrap.classList.remove("loader_hideen");
 }
