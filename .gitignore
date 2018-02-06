@@ -1,6 +1,5 @@
 /node_modules/
 /dist/
-/app/css/
 /.git/
 /**/*.psd
 /**/Thumbs.db
