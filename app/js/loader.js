@@ -99,7 +99,7 @@ function init_optimizedResize() {
 
 function init_loader_demo() {
     loader_demo = false;
-    console.log('Демо-режим');
+    console.log('Демо-режим прелоадера');
     setInterval(function() {
         if (loader_wrap.style.display == loader_wrap_original_display) {
             remove_preloader(test_callback_add);
