@@ -87,7 +87,6 @@ function remove_preloader(callback1, callback2) {
                 animation_classes.scale_after
             );
 
-
             if (typeof(callback1) == 'function') {
                 callback1();
             } else if (typeof(callback2) == 'function') {

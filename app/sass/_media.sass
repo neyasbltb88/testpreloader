@@ -1,53 +1,66 @@
+$preloader_size: 30%
 /*==========  Desktop First  ==========*/
-
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px)
-	/**/
-
-
+@media only screen and (min-width : 1920px)
+    #loader_wrap
+        .loader
+            width: $preloader_size - 26%
+            height: $preloader_size - 26%  //Отладка
+@media only screen and (max-width : 1920px)
+    #loader_wrap
+        .loader
+            width: $preloader_size - 23%
+            height: $preloader_size - 23%  //Отладка
+@media only screen and (max-width : 1366px)
+    #loader_wrap
+        .loader
+            width: $preloader_size - 20%
+            height: $preloader_size - 20%  //Отладка
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px)
-	/**/
-
-
+    #loader_wrap
+        .loader
+            width: $preloader_size - 15%
+            height: $preloader_size - 15%  //Отладка
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px)
-	/**/
-
-
+    #loader_wrap
+        .loader
+            width: $preloader_size - 12%
+            height: $preloader_size - 12%  //Отладка
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px)
-	/**/
-
+    #loader_wrap
+        .loader
+            width: $preloader_size - 5%
+            height: $preloader_size - 5%  //Отладка
+@media only screen and (max-width : 414px)
+    #loader_wrap
+        .loader
+            width: $preloader_size
+            height: $preloader_size  //Отладка
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px)
 	/**/
-
-
 /*==========  Mobile First  ==========*/
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px)
 	/**/
 
-
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px)
 	/**/
-
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px)
 	/**/
 
-
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px)
 	/**/
 
-
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px)
 	/**/
-
