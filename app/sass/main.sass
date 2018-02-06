@@ -1,4 +1,5 @@
 $rotation_duration: 3.5s
+$blur_duration: 1.5s
 $black: #2f2f2f
 $accent: #fba419
 $scale_val: 50%
@@ -6,7 +7,7 @@ $scale_val: 50%
 // Оптимальный размер для телефонов, 
 // с увеличением экрана это значение будет уменьшаться
 // в медиа-запросах так, чтобы на пк прелоадер не был огромным
-$preloader_size: 30%  
+$preloader_size: 30% 
 
 *
     margin: 0
@@ -16,6 +17,11 @@ body
     background-color: $black
     overflow-x: hidden
     overflow-y: hidden
+
+.blur
+    filter: blur(10px)
+    transition: all $blur_duration
+
 
 #loader_wrap
     display: flex
@@ -141,23 +147,17 @@ body
         width: 100%
         text-align: center
         position: relative
-        // .callback_info
-        //     width: 100%
-        //     text-align: center
-        //     display: none
-    // &.loader_hideen
-    //     .callback_info
-    //         display: block
     &.loader_hideen
+        // transition: all .3s
         .loaded_page
+            // filter: blur(0)
+            // transition: all .3s
             &:after
                 content: 'Закончилась анимация исчезновения прелоадера'
                 display: block
                 width: 100%
                 position: absolute
                 color: $accent
-                // left: 50%
-                // transform: translate(-50%, 0)
 
 
 

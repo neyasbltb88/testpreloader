@@ -7,13 +7,15 @@ var loader = document.querySelector('.loader');
 var content_wrap = document.querySelector('#content_wrap');
 
 var loader_fade_time_preloader = 1500; //Время исчезновения прелоадера, мс
-var loader_time_demo = 3500; //Период переключения демо, мс
+var loader_time_demo = 7000; //Период переключения демо, мс
 
 var animation_classes = {
     rotation: "loader_animation_rotation",
     scale_before: "loader_animation_scale_before",
     scale_after: "loader_animation_scale_after"
 };
+
+var post_loader_transition_class = "blur";
 
 if (loader_square) {
     init_optimizedResize();
@@ -44,8 +46,10 @@ function init_preloader(callback1, callback2) {
         animation_classes.scale_after
     );
     loader_wrap.classList.add("active");
+    content_wrap.classList.add(post_loader_transition_class);
     setTimeout(function() {
         loader_wrap.style.opacity = '1';
+        content_wrap.style.transition = 'all ' + loader_fade_time_preloader / 1000 + 's';
     }, 10);
 
     if (loader_square) {
@@ -72,13 +76,14 @@ function remove_preloader(callback1, callback2) {
     if (loader_square) {
         window.removeEventListener("optimizedResize", preloader_resize);
     }
-    if (loader_wrap) {
+    if (loader_wrap && content_wrap) {
         loader_wrap.style.transition = 'opacity ' + loader_fade_time_preloader / 1000 + 's';
         loader_wrap.style.opacity = '0';
         document.body.style.overflowY = 'unset';
         document.body.style.width = '';
         document.body.style.height = '';
         document.body.style.position = '';
+        content_wrap.classList.remove(post_loader_transition_class);
         setTimeout(function() {
             loader_wrap.style.display = 'none';
             loader_wrap.classList.remove(
@@ -87,6 +92,7 @@ function remove_preloader(callback1, callback2) {
                 animation_classes.scale_after
             );
             loader_wrap.classList.remove("active");
+            content_wrap.style.transition = '';
 
             if (typeof(callback1) == 'function') {
                 callback1();
