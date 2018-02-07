@@ -117,21 +117,29 @@ function init_optimizedResize() {
 };
 
 function init_loader_demo() { //Инициализация Демо-режима
-    loader_demo = false; //Отключить флаг демо для того, чтобы выполнилась один раз
-    console.log('Демо-режим прелоадера включен');
-    loader_demo_interval = setInterval(function() { //Сохраняет интервал в переменную
-        if (loader_wrap.style.display == loader_wrap_original_display) {
-            remove_preloader(test_callback_add);
-        } else {
-            init_preloader(test_callback_remove);
-        }
-    }, loader_time_demo);
+    if (loader_demo) { //Если разрешен/не запущен
+        loader_demo = false; //Отключить флаг демо для того, чтобы выполнилась один раз
+        console.log('Демо-режим прелоадера включен. Для отключения вызовите remove_loader_demo()');
+        loader_demo_interval = setInterval(function() { //Сохраняет интервал в переменную
+            if (loader_wrap.style.display == loader_wrap_original_display) {
+                remove_preloader(test_callback_add);
+            } else {
+                init_preloader(test_callback_remove);
+            }
+        }, loader_time_demo);
+    } else {
+        console.log('Демо-режим уже был включен ранее');
+    }
 };
 
 function remove_loader_demo() { //Отключение Демо-режима
-    loader_demo = true; //Включить флаг демо для того, чтобы запустить init_loader_demo при следующем вызове
-    console.log('Демо-режим прелоадера отключен');
-    clearInterval(loader_demo_interval); //Сбрасывает интервал, сохраненный в переменную
+    if (!loader_demo) { //Если запущен
+        loader_demo = true; //Включить флаг демо для того, чтобы запустить init_loader_demo при следующем вызове
+        console.log('Демо-режим прелоадера отключен. Для включения вызовите init_loader_demo()');
+        clearInterval(loader_demo_interval); //Сбрасывает интервал, сохраненный в переменную
+    } else {
+        console.log('Демо-режим уже был выключен ранее');
+    }
 };
 
 function test_callback_add() { //Тестовый колбек, вызов которого отображает в примере...
@@ -161,9 +169,7 @@ if (loader_square) { //Если нужна адаптивность
     init_preloader(); //Если не нужна адаптивность, просто запустить прелоадер
 };
 
-if (loader_demo) { //Если включен флаг Демо-режима...
-    init_loader_demo() //запустить его
-};
+init_loader_demo() //Если включен флаг Демо-режима, то запустить его
 
 // ========= Для теста =========
 content_wrap.addEventListener("click", init_preloader); //По клику на контент начать отображение прелоадера
