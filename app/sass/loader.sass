@@ -1,8 +1,7 @@
-$rotation_duration: 3.5s
-$blur_duration: 1.5s
+$rotation_duration: 3.5s    //Длительность анимации
 $black: #2f2f2f
 $accent: #fba419
-$scale_val: 50%
+$scale_val: 50%     //Значение увеличения прелоадера при анимации
 
 // Оптимальный размер для телефонов, 
 // с увеличением экрана это значение будет уменьшаться
@@ -13,40 +12,64 @@ $preloader_size: 30%
     margin: 0
     padding: 0
 
+::-webkit-scrollbar 
+    width: 6px
+
+::-webkit-scrollbar-thumb 
+    background-color: $accent
+    border-radius: 5px
+
+::-webkit-scrollbar-track 
+    background-color: $black
+
 body
     background-color: $black
     overflow-x: hidden
     overflow-y: hidden
+    &.content
+        position: static
+        overflow-y: unset
+        width: unset
+        max-width: unset
+        height: unset
+        min-height: unset
+        #loader_wrap
+            opacity: 0
+    &.loader
+        #loader_wrap
+            opacity: 1
+    &.dont_scroll
+        overflow-y: hidden
+        position: fixed
+        width: 100vw
+        max-width: 100vw
+        height: 100vh
+        min-height: 100vh
 
 .blur
-    filter: blur(10px)
-    transition: all $blur_duration
-
+    filter: blur(5px)
 
 #loader_wrap
     display: flex
     align-content: center
     align-items: center
     justify-content: space-around
-    width: 100% 
+    width: 100vw
     height: 100vh
-    // width: 500px              //Отладка
-    // height: 500px             //Отладка
-    // margin: 0 auto:           //Отладка
     background-color: $black
     overflow: hidden
     position: fixed
     top: 0
     left: 0
-    z-index: 9999
+    z-index: 999
+    &.loader_animation
+        .loader
+            opacity: 1
     .loader
         position: relative
         width: $preloader_size
         height: $preloader_size  //Отладка
         opacity: 0
-    &.active
-        .loader
-            opacity: 1
         .logo_l
             position: absolute
             left: 0
@@ -60,7 +83,6 @@ body
                 width: 37%
                 height: 42%
                 position: absolute
-                // max-width: 36px         //Отладка
                 svg
                     width: 100%
                     height: 100%
@@ -94,13 +116,13 @@ body
 //                 border: 1px solid #00f
 
 #loader_wrap
-    &.loader_animation_rotation
+    &.loader_animation
         .loader
             animation: rotation $rotation_duration infinite linear
-    &.loader_animation_scale_before
+    &.loader_animation
         .before
             animation: scale_before ($rotation_duration / 2) infinite linear alternate
-    &.loader_animation_scale_after
+    &.loader_animation
         .after
             animation: scale_after ($rotation_duration / 2) infinite linear alternate
 
@@ -135,8 +157,7 @@ body
     align-items: center
     justify-content: space-around
     flex-direction: column
-    width: 100%
-    // height: 100vh
+    width: 100vw
     height: 150vh
     background-color: $black
     font-size: 24px
@@ -144,24 +165,17 @@ body
     font-family: sans-serif
     z-index: 1
     .loaded_page
-        width: 100%
+        width: 90%
         text-align: center
         position: relative
     &.loader_hideen
-        // transition: all .3s
         .loaded_page
-            // filter: blur(0)
-            // transition: all .3s
             &:after
                 content: 'Закончилась анимация исчезновения прелоадера'
                 display: block
                 width: 100%
                 position: absolute
                 color: $accent
-
-
-
-
 
 
 @import "loadermedia" // Всегда в конце
