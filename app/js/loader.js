@@ -1,6 +1,6 @@
 ;
 "use strict";
-var loader_demo = true; //Включить/выключить режим демонстрации
+var loader_demo = false; //Включить/выключить режим демонстрации
 var loader_square = true; //Включить/выключить режим адаптивности
 
 var loader_fade_time = 500; //Время скрытия прелоадера, мс
