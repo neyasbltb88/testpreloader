@@ -143,7 +143,7 @@ function test_callback_remove() { //Тестовый колбек, вызов к
 };
 
 function preloader_resize() { //Функция для адаптивности прелоадера (сохраняет квадратные пропорции блока loader)
-    console.log('preloader_resize');
+    // console.log('preloader_resize');
     var w_w = window.innerWidth; //Получить ширину окна
     var loader_comp_style = getComputedStyle(loader); //Получить стили loader из css
     var loader_w = loader_comp_style.width; //Выбрать из них ширину
