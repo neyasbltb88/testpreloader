@@ -15,8 +15,17 @@ var gulp = require('gulp'),
     rsync = require('gulp-rsync');
 
 // Скрипты проекта
-
 gulp.task('common-js', function() {
+    return gulp.src([
+            'app/js/common.js',
+        ])
+        .pipe(concat('common.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('app/js'))
+        .pipe(browserSync.reload({ stream: true }));
+});
+
+gulp.task('loader-js', function() {
     return gulp.src([
             'app/js/loader.js',
         ])
@@ -26,16 +35,16 @@ gulp.task('common-js', function() {
         .pipe(browserSync.reload({ stream: true }));
 });
 
-// gulp.task('js', ['common-js'], function() {
-// 	return gulp.src([
-// 		'app/libs/jquery/dist/jquery.min.js',
-// 		'app/js/loader.min.js', // Всегда в конце
-// 		])
-// 	.pipe(concat('scripts.min.js'))
-// 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
-// 	.pipe(gulp.dest('app/js'))
-// 	.pipe(browserSync.reload({stream: true}));
-// });
+gulp.task('js', ['common-js'], function() {
+    return gulp.src([
+            'app/libs/jquery/dist/jquery.min.js',
+            'app/js/loader.min.js', // Всегда в конце
+        ])
+        .pipe(concat('scripts.min.js'))
+        // .pipe(uglify()) // Минимизировать весь js (на выбор)
+        .pipe(gulp.dest('app/js'))
+        .pipe(browserSync.reload({ stream: true }));
+});
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -58,9 +67,10 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('watch', ['sass', 'common-js', 'browser-sync'], function() {
+gulp.task('watch', ['sass', 'loader-js', 'js', 'browser-sync'], function() {
     gulp.watch('app/sass/**/*.sass', ['sass']);
-    gulp.watch(['libs/**/*.js', 'app/js/loader.js'], ['common-js']);
+    gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['common-js']);
+    gulp.watch(['libs/**/*.js', 'app/js/loader.js'], ['loader-js']);
     gulp.watch('app/*.html', browserSync.reload);
 });
 
@@ -70,8 +80,7 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'common-js'], function() {
-
+gulp.task('build', ['removedist', 'imagemin', 'sass', 'loader-js', 'js'], function() {
     var buildFiles = gulp.src([
         'app/*.html',
         'app/.htaccess',
@@ -79,10 +88,12 @@ gulp.task('build', ['removedist', 'imagemin', 'sass', 'common-js'], function() {
 
     var buildCss = gulp.src([
         'app/css/loader.min.css',
+        'app/css/main.min.css',
     ]).pipe(gulp.dest('dist/css'));
 
     var buildJs = gulp.src([
         'app/js/loader.min.js',
+        'app/js/common.min.js',
     ]).pipe(gulp.dest('dist/js'));
 
     var buildFonts = gulp.src([
