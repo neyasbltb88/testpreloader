@@ -60,8 +60,9 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function() {
     return gulp.src('app/sass/**/*.sass')
         .pipe(sass({ outputStyle: 'expand' }).on("error", notify.onError()))
-        .pipe(rename({ suffix: '.min', prefix: '' }))
         .pipe(autoprefixer(['last 15 versions']))
+        .pipe(gulp.dest('app/css'))
+        .pipe(rename({ suffix: '.min', prefix: '' }))
         .pipe(cleanCSS()) // Опционально, закомментировать при отладке
         .pipe(gulp.dest('app/css'))
         .pipe(browserSync.reload({ stream: true }));
