@@ -1,14 +1,14 @@
 ;
 "use strict";
-var loader_demo = false; //Включить/выключить режим демонстрации
+var loader_demo = true; //Включить/выключить режим демонстрации
 var loader_square = true; //Включить/выключить режим адаптивности
 
 var loader_fade_time = 500; //Время скрытия прелоадера, мс
 var loader_time_demo = 3500; //Период переключения демо, мс
 
-var animation_classes = [ //Классы, которые будут добавляться на блок #content_wrap
+var animation_classes = [ //Классы, которые будут добавляться на блок #loader_wrap
     "loader_animation", //Это базовый класс анимации, на его наличие привязана анимация в стилях...
-]; //В массив можно добавлять свои классы 
+]; //В массив можно добавлять свои классы через запятую
 
 //Класс для дополнительной анимации проявления контента...
 //Если он не нужен, то следует оставить пустую строку ("")...
@@ -26,6 +26,7 @@ content_wrap.style.transition = 'all ' + loader_fade_time / 1000 + 's'; //Уст
 loader_wrap.style.transition = 'opacity ' + loader_fade_time / 1000 + 's'; //Установка transition//Установка времени transition...
 //для анимации появления/скрытия прелоадера
 var loader_demo_interval; //Будет хранить интервал Демо-режима. Нужен для его же сброса
+var loader_demo_run = false; //Фаг первого запуска Демо-режима
 
 //Инициализация появления прелоадера. Может принимать функцию в качестве аргумента,...
 //которая вызовется по окончанию анимации проявления прелоадера
@@ -117,8 +118,9 @@ function init_optimizedResize() {
 };
 
 function init_loader_demo() { //Инициализация Демо-режима
-    if (loader_demo) { //Если разрешен/не запущен
+    if (loader_demo && !loader_demo_run) { //Если разрешен и не запущен
         loader_demo = false; //Отключить флаг демо для того, чтобы выполнилась один раз
+        loader_demo_run = true; //Включить флаг запущенного Демо-режима
         console.log('Демо-режим прелоадера включен. Для отключения вызовите remove_loader_demo()');
         loader_demo_interval = setInterval(function() { //Сохраняет интервал в переменную
             if (loader_wrap.style.display == loader_wrap_original_display) {
@@ -127,18 +129,23 @@ function init_loader_demo() { //Инициализация Демо-режима
                 init_preloader(test_callback_remove);
             }
         }, loader_time_demo);
+    } else if (!loader_demo && loader_demo_run) { //Если разрешен и запущен
+        console.log('Демо-режим уже был включен ранее. Для отключения вызовите remove_loader_demo()');
+    } else if (!loader_demo && !loader_demo_run) { //Если не разрешен и не запущен
+        console.log('Для включения Демо-режима вызовите init_loader_demo()');
     } else {
-        console.log('Демо-режим уже был включен ранее');
+        console.log('Демо-режим: O_o');
     }
 };
 
 function remove_loader_demo() { //Отключение Демо-режима
-    if (!loader_demo) { //Если запущен
+    if (!loader_demo && loader_demo_run) { //Если запущен
         loader_demo = true; //Включить флаг демо для того, чтобы запустить init_loader_demo при следующем вызове
+        loader_demo_run = false; //Выключить флаг запущенного Демо-режима
         console.log('Демо-режим прелоадера отключен. Для включения вызовите init_loader_demo()');
         clearInterval(loader_demo_interval); //Сбрасывает интервал, сохраненный в переменную
     } else {
-        console.log('Демо-режим уже был выключен ранее');
+        console.log('Демо-режим не включен. Для включения вызовите init_loader_demo()');
     }
 };
 
@@ -169,7 +176,13 @@ if (loader_square) { //Если нужна адаптивность
     init_preloader(); //Если не нужна адаптивность, просто запустить прелоадер
 };
 
-init_loader_demo() //Если включен флаг Демо-режима, то запустить его
+if (loader_demo) { //Если Демо-режим разрешен,...
+    init_loader_demo(); //то запустить его
+} else if (!loader_demo) { //Если Демо-режим не разрешен,...
+    console.log('Для включения Демо-режима вызовите init_loader_demo()');
+    loader_demo = true; //То включить разрешение для возможности последующего ручного запуска
+}
+
 
 // ========= Для теста =========
 content_wrap.addEventListener("click", init_preloader); //По клику на контент начать отображение прелоадера
