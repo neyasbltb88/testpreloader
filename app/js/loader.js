@@ -129,12 +129,16 @@ function init_loader_demo() { //Инициализация Демо-режима
                 init_preloader(test_callback_remove);
             }
         }, loader_time_demo);
+        return true;
     } else if (!loader_demo && loader_demo_run) { //Если разрешен и запущен
         console.log('Демо-режим уже был включен ранее. Для отключения вызовите remove_loader_demo()');
+        return false;
     } else if (!loader_demo && !loader_demo_run) { //Если не разрешен и не запущен
         console.log('Для включения Демо-режима вызовите init_loader_demo()');
+        return false;
     } else {
         console.log('Демо-режим: O_o');
+        return false;
     }
 };
 
@@ -144,8 +148,10 @@ function remove_loader_demo() { //Отключение Демо-режима
         loader_demo_run = false; //Выключить флаг запущенного Демо-режима
         console.log('Демо-режим прелоадера отключен. Для включения вызовите init_loader_demo()');
         clearInterval(loader_demo_interval); //Сбрасывает интервал, сохраненный в переменную
+        return true;
     } else {
         console.log('Демо-режим не включен. Для включения вызовите init_loader_demo()');
+        return false;
     }
 };
 
